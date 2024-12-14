@@ -35,7 +35,8 @@ class AdapterMovie(
 
     }
 
-    inner class MovieViewHolder(binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(binding: ItemMovieBinding):
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(movie: MovieEntity){
             binding.run {
                 Glide.with(context)

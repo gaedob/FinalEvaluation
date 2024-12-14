@@ -1,6 +1,10 @@
 package com.inforcap.exampleapiresttmdb.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class FigureDetailEntity(
         @SerializedName("id")
          val id: Int,
@@ -22,5 +26,5 @@ data class FigureDetailEntity(
         val disponibilidad: Boolean,
         @SerializedName("precio")
         val precio: Long
-)
+) : Parcelable
 

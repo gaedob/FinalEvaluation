@@ -96,16 +96,23 @@ class MainActivity : AppCompatActivity() {
     }
     private fun navigateToDetailActivity(detail: FigureDetailEntity) {
         val intent = Intent(this, DetailsActivity::class.java).apply {
-            putExtra("MOVIE_ID", detail.id)
-            putExtra("MOVIE_NOMBRE", detail.nombre)
-            putExtra("MOVIE_LOGO", detail.logo)
-            putExtra("MOVIE_FECHA_CREACION", detail.fecha_creacion)
-            putExtra("MOVIE_ORIGEN", detail.origen)
-            putExtra("MOVIE_PELICULA", detail.pelicula)
-           // putExtra("MOVIE_COLORES", detail.colores.toList())
-            putExtra("MOVIE_DESCRIPCION", detail.descripcion)
-            putExtra("MOVIE_DISPONIBILIDA", detail.disponibilidad)
-            putExtra("MOVIE_PRECIO", detail.precio)
+
+
+            putExtra("BUNDLE", Bundle().apply {
+                if (detail != null) {
+                    putParcelable("DETAIL",detail)
+                }
+            })
+//            putExtra("MOVIE_ID", detail.id)
+//            putExtra("MOVIE_NOMBRE", detail.nombre)
+//            putExtra("MOVIE_LOGO", detail.logo)
+//            putExtra("MOVIE_FECHA_CREACION", detail.fecha_creacion)
+//            putExtra("MOVIE_ORIGEN", detail.origen)
+//            putExtra("MOVIE_PELICULA", detail.pelicula)
+//           // putExtra("MOVIE_COLORES", detail.colores.toList())
+//            putExtra("MOVIE_DESCRIPCION", detail.descripcion)
+//            putExtra("MOVIE_DISPONIBILIDA", detail.disponibilidad)
+//            putExtra("MOVIE_PRECIO", detail.precio)
 
 
 
