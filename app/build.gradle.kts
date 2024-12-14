@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -54,6 +55,8 @@ dependencies {
 
     //Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.squareup.picasso:picasso:2.8")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

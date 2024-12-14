@@ -16,7 +16,8 @@ import com.inforcap.exampleapiresttmdb.model.MovieEntity
 
 class AdapterMovie(
     val context: Context,
-    var movieList: List<MovieEntity>
+    var movieList: List<MovieEntity>,
+    private val onMovieSelected: (Int) -> Unit // Callback para pasar el id
 ) : RecyclerView.Adapter<AdapterMovie.MovieViewHolder>() {
 
     private lateinit var binding: ItemMovieBinding
@@ -31,9 +32,11 @@ class AdapterMovie(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.onBind(movieList[position])
+
     }
 
-    inner class MovieViewHolder(binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(binding: ItemMovieBinding):
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(movie: MovieEntity){
             binding.run {
                 Glide.with(context)
@@ -50,16 +53,17 @@ class AdapterMovie(
                 )
 
                 ivImage.setOnClickListener {
-                    onClick?.invoke(movie.id)
-                   // showOverview(movie.nombre, movie.nombre)
+                   // onClick?.invoke(movie.id)
+                    onMovieSelected(movie.id)
+                   // showOverview(movie.nombre, movie.nombre, movie.id)
                 }
             }
         }
 
-        private fun showOverview(title: String, overview: String) {
+        private fun showOverview(title: String, overview: String, id :Int) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(title)
-            builder.setMessage(overview)
+            builder.setMessage(id.toString())
             builder.show()
         }
     }
